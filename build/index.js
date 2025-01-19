@@ -156,20 +156,22 @@ function addControls(BlockEdit) {
         ...props
       });
     }
-
-    // Retrieve selected attributes from the block.
-    const {
-      alt,
-      isDecorative
-    } = attributes;
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(BlockEdit, {
         ...props
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Accessibility", "enable-decorative-images"),
+          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("URL", "add-url-to-blocks"),
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, {
-            children: "Add settings here..."
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+              label: "href",
+              onChange: value => {
+                setAttributes({
+                  urlCustom: value
+                });
+              },
+              value: attributes.urlCustom
+            })
           })
         })
       })]
@@ -181,9 +183,8 @@ function addAttribute(settings, name) {
   if (name === "core/cover") {
     settings.attributes = {
       ...settings.attributes,
-      isDecorative: {
-        type: "boolean",
-        default: false
+      urlCustom: {
+        type: "string"
       }
     };
   }

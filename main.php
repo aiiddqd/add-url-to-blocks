@@ -8,6 +8,7 @@ namespace AddUrlToBlocks;
 
 add_action('enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue_assets');
 // add_filter('register_block_type_args', __NAMESPACE__ . '\chg_args', 10, 2);
+
 function enqueue_assets()
 {
     $asset_file = include plugin_dir_path(__FILE__) . 'build/index.asset.php';

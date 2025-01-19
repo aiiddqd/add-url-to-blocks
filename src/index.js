@@ -5,7 +5,7 @@ import {
   ExternalLink,
   PanelBody,
   PanelRow,
-  ToggleControl,
+  TextControl,
 } from "@wordpress/components";
 
 function addControls(BlockEdit) {
@@ -17,15 +17,24 @@ function addControls(BlockEdit) {
       return <BlockEdit {...props} />;
     }
 
-    // Retrieve selected attributes from the block.
-    const { alt, isDecorative } = attributes;
+    
 
     return (
       <>
         <BlockEdit {...props} />
         <InspectorControls>
-          <PanelBody title={__("Accessibility", "enable-decorative-images")}>
-            <PanelRow>Add settings here...</PanelRow>
+          <PanelBody title={__("URL", "add-url-to-blocks")}>
+            <PanelRow>
+              <TextControl
+                label="href"
+                onChange={(value) => {
+                  setAttributes({
+                    urlCustom: value,
+                  });
+                }}
+                value={attributes.urlCustom}
+              />
+            </PanelRow>
           </PanelBody>
         </InspectorControls>
       </>
@@ -38,9 +47,8 @@ function addAttribute(settings, name) {
   if (name === "core/cover") {
     settings.attributes = {
       ...settings.attributes,
-      isDecorative: {
-        type: "boolean",
-        default: false,
+      urlCustom: {
+        type: "string",
       },
     };
   }
@@ -48,14 +56,6 @@ function addAttribute(settings, name) {
   return settings;
 }
 
-addFilter(
-  "editor.BlockEdit",
-  "ddev/add-url-to-blocks-controls",
-  addControls
-);
+addFilter("editor.BlockEdit", "ddev/add-url-to-blocks-controls", addControls);
 
-addFilter(
-  "blocks.registerBlockType",
-  "ddev/add-url-to-blocks",
-  addAttribute
-);
+addFilter("blocks.registerBlockType", "ddev/add-url-to-blocks", addAttribute);
