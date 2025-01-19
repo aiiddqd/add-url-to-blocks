@@ -15,8 +15,6 @@ add_action('wp_enqueue_scripts', __NAMESPACE__ . '\assets' );
 add_filter('render_block_core/cover', __NAMESPACE__ . '\change_block_html', 10, 2);
 
 /**
- * Adds the role attribute and removes alt text in decorative Image blocks.
- *
  * @param string $block_content The original HTML content of the block.
  * @param array  $block         The block details, including attributes.
  * @return string               The modified block content with the decorative role applied, or the original content if not decorative.
@@ -65,6 +63,7 @@ function enqueue_assets()
         $asset_file['version']
     );
 
+    // @todo
     // wp_set_script_translations(
     //     'add-url-to-blocks-scripts',
     //     'add-url-to-blocks'
