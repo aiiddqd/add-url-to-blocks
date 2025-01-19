@@ -156,13 +156,20 @@ function addControls(BlockEdit) {
         ...props
       });
     }
+
+    // Retrieve selected attributes from the block.
+    // const { urlCustom } = attributes;
+    const {
+      urlCustom,
+      urlCustomNewTab
+    } = attributes;
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(BlockEdit, {
         ...props
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
           title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("URL", "add-url-to-blocks"),
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
               label: "href",
               onChange: value => {
@@ -170,24 +177,39 @@ function addControls(BlockEdit) {
                   urlCustom: value
                 });
               },
-              value: attributes.urlCustom
+              value: urlCustom
             })
-          })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
+              label: "new tab",
+              checked: urlCustomNewTab,
+              onChange: value => {
+                setAttributes({
+                  urlCustomNewTab: value
+                });
+              },
+              value: urlCustomNewTab
+            })
+          })]
         })
       })]
     });
   };
 }
 function addAttribute(settings, name) {
-  // Only add the attribute to Image blocks.
-  if (name === "core/cover") {
-    settings.attributes = {
-      ...settings.attributes,
-      urlCustom: {
-        type: "string"
-      }
-    };
+  if (name !== "core/cover") {
+    return settings;
   }
+  settings.attributes = {
+    ...settings.attributes,
+    urlCustom: {
+      type: "string"
+    },
+    urlCustomNewTab: {
+      type: "boolean",
+      default: false
+    }
+  };
   return settings;
 }
 (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)("editor.BlockEdit", "ddev/add-url-to-blocks-controls", addControls);

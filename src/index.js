@@ -6,6 +6,7 @@ import {
   PanelBody,
   PanelRow,
   TextControl,
+  ToggleControl,
 } from "@wordpress/components";
 
 function addControls(BlockEdit) {
@@ -17,7 +18,9 @@ function addControls(BlockEdit) {
       return <BlockEdit {...props} />;
     }
 
-    
+    // Retrieve selected attributes from the block.
+    // const { urlCustom } = attributes;
+    const { urlCustom, urlCustomNewTab } = attributes;
 
     return (
       <>
@@ -32,7 +35,19 @@ function addControls(BlockEdit) {
                     urlCustom: value,
                   });
                 }}
-                value={attributes.urlCustom}
+                value={urlCustom}
+              />
+            </PanelRow>
+            <PanelRow>
+              <ToggleControl
+                label="new tab"
+                checked={urlCustomNewTab}
+                onChange={(value) => {
+                  setAttributes({
+                    urlCustomNewTab: value,
+                  });
+                }}
+                value={urlCustomNewTab}
               />
             </PanelRow>
           </PanelBody>
@@ -43,16 +58,19 @@ function addControls(BlockEdit) {
 }
 
 function addAttribute(settings, name) {
-  // Only add the attribute to Image blocks.
-  if (name === "core/cover") {
-    settings.attributes = {
-      ...settings.attributes,
-      urlCustom: {
-        type: "string",
-      },
-    };
+  if (name !== "core/cover") {
+    return settings;
   }
-
+  settings.attributes = {
+    ...settings.attributes,
+    urlCustom: {
+      type: "string",
+    },
+    urlCustomNewTab: {
+      type: "boolean",
+      default: false,
+    },
+  };
   return settings;
 }
 
