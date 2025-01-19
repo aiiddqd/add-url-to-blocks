@@ -1,11 +1,15 @@
 {
 	"scripts": {
-		"start": "wp-env start",
-		"stop": "wp-env stop",
-		"clean": "wp-env clean",
+		"start": "wp-scripts start",
+        "build": "wp-scripts build",
+		"server-start": "wp-env start",
+		"server-stop": "wp-env stop",
+		"server-clean": "wp-env clean",
+		"wp": "wp-env run cli wp",
 		"wp-env": "wp-env"
 	},
 	"devDependencies": {
-		"@wordpress/env": "^10.16.0"
+		"@wordpress/env": "^10.16.0",
+		"@wordpress/scripts": "^30.9.0"
 	}
 }
