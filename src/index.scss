@@ -1,0 +1,11 @@
+.wp-block-cover.has-link {
+    position: relative;
+
+    a.url-wrapper {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 999;
+    }
+}
+

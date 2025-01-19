@@ -1,4 +1,5 @@
 import { __ } from "@wordpress/i18n";
+import './index.scss';
 import { addFilter } from "@wordpress/hooks";
 import { InspectorControls } from "@wordpress/block-editor";
 import {
