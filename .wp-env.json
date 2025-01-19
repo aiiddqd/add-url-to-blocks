@@ -5,5 +5,5 @@
     "plugins": [ 
         "https://downloads.wordpress.org/plugin/query-monitor.3.17.0.zip",
         "." 
-    ]  
+    ]
 }
