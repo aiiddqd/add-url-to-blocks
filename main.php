@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: add URL to blocks
+Plugin Name: @ add URL to blocks
 Description: Add URL to blocks like Cover, Group etc
 Plugin URI: https://github.com/aiiddqd/add-url-to-blocks
 Version: 0.2.250119
