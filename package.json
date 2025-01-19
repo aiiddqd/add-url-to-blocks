@@ -6,6 +6,7 @@
 		"server-stop": "wp-env stop",
 		"server-clean": "wp-env clean",
 		"wp": "wp-env run cli wp",
+		"wp-core-download": "wp-env run cli wp core download --path=local/wordpress/",
 		"wp-env": "wp-env"
 	},
 	"devDependencies": {

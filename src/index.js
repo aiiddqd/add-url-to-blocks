@@ -8,7 +8,7 @@ import {
   ToggleControl,
 } from "@wordpress/components";
 
-function addImageInspectorControls(BlockEdit) {
+function addControls(BlockEdit) {
   return (props) => {
     const { name, attributes, setAttributes } = props;
 
@@ -50,12 +50,12 @@ function addAttribute(settings, name) {
 
 addFilter(
   "editor.BlockEdit",
-  "example/add-image-inspector-controls",
-  addImageInspectorControls
+  "ddev/add-url-to-blocks-controls",
+  addControls
 );
 
 addFilter(
   "blocks.registerBlockType",
-  "developer-hours-examples/add-is-decorative-attribute",
+  "ddev/add-url-to-blocks",
   addAttribute
 );

@@ -142,7 +142,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function addImageInspectorControls(BlockEdit) {
+function addControls(BlockEdit) {
   return props => {
     const {
       name,
@@ -189,8 +189,8 @@ function addAttribute(settings, name) {
   }
   return settings;
 }
-(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)("editor.BlockEdit", "example/add-image-inspector-controls", addImageInspectorControls);
-(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)("blocks.registerBlockType", "developer-hours-examples/add-is-decorative-attribute", addAttribute);
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)("editor.BlockEdit", "ddev/add-url-to-blocks-controls", addControls);
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)("blocks.registerBlockType", "ddev/add-url-to-blocks", addAttribute);
 })();
 
 /******/ })()

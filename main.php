@@ -12,7 +12,6 @@ function enqueue_assets()
 {
     $asset_file = include plugin_dir_path(__FILE__) . 'build/index.asset.php';
 
-    var_dump($asset_file); exit;
     wp_enqueue_script(
         'add-url-to-blocks-scripts',
         plugin_dir_url(__FILE__) . 'build/index.js',
