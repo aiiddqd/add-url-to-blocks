@@ -3,12 +3,14 @@
 Plugin Name: add URL to blocks
 Description: Add URL to blocks like Cover, Group etc
 Plugin URI: https://github.com/aiiddqd/add-url-to-blocks
-Version: 0.1.250119
+Version: 0.2.250119
 */
 
 namespace AddUrlToBlocks;
 
 use WP_HTML_Tag_Processor;
+
+defined( 'ABSPATH' ) || exit;
 
 add_action('enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue_assets');
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\assets' );
